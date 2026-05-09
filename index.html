@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mostapha Balon — Data Science Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #4a4a45;
+    --ink-muted: #8a8a82;
+    --paper: #f5f3ee;
+    --paper-warm: #ede9e0;
+    --paper-mid: #e0dbd0;
+    --accent: #c84b2f;
+    --accent-dark: #9c3520;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
+    --amber: #ba7517;
+    --amber-light: #faeeda;
+    --blue: #185fa5;
+    --blue-light: #e6f1fb;
+    --border: rgba(26,26,24,0.12);
+    --border-strong: rgba(26,26,24,0.22);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 60px;
+    background: rgba(245,243,238,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding-top: 60px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 3rem;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tag-teal { background: var(--teal-light); color: var(--teal); }
+  .tag-amber { background: var(--amber-light); color: var(--amber); }
+  .tag-blue { background: var(--blue-light); color: var(--blue); }
+  .tag-coral { background: #faece7; color: #993c1d; }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    transition: border-color 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  .hero-right {
+    background: var(--paper-warm);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    width: 100%;
+    max-width: 360px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .hero-stat {
+    background: var(--paper-warm);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-number.accent { color: var(--accent); }
+  .stat-number.teal { color: var(--teal); }
+  .stat-number.blue { color: var(--blue); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-domain-note {
+    margin-top: 2rem;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+    max-width: 300px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 0; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-body p {
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-body strong { color: var(--ink); font-weight: 600; }
+
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 80px;
+  }
+
+  .sidebar-block {
+    padding: 1.25rem 1.5rem;
+    background: var(--paper);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .sidebar-block-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-pill {
+    font-size: 12px;
+    padding: 3px 10px;
+    background: var(--paper-mid);
+    color: var(--ink-soft);
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--paper); }
+
+  .projects-filter {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 3px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .project-card {
+    background: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .project-card:hover { background: #fdfcfa; }
+
+  .project-card.planned { background: var(--paper-warm); }
+  .project-card.planned:hover { background: #f0ece3; }
+
+  .project-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+  }
+
+  .status-complete { background: var(--teal-light); color: var(--teal); }
+  .status-planned { background: var(--amber-light); color: var(--amber); }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.3;
+    padding-right: 80px;
+  }
+
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .tool-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    background: var(--paper-mid);
+    color: var(--ink-soft);
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+  }
+
+  .project-highlight {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.65;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid var(--accent);
+    background: rgba(200,75,47,0.04);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .project-domain-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--ink); color: var(--paper); }
+
+  #contact .section-num { color: var(--accent); }
+  #contact .section-title { color: var(--paper); }
+  #contact .section-header { border-bottom-color: rgba(245,243,238,0.15); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-size: 1.1rem;
+    color: rgba(245,243,238,0.75);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    background: rgba(245,243,238,0.07);
+    border: 1px solid rgba(245,243,238,0.12);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--paper);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    background: rgba(245,243,238,0.13);
+    border-color: rgba(245,243,238,0.25);
+  }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .icon-gh { background: rgba(245,243,238,0.12); }
+  .icon-li { background: rgba(24,95,165,0.3); }
+  .icon-email { background: rgba(200,75,47,0.3); }
+
+  .contact-link-text { flex: 1; }
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(245,243,238,0.45);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .contact-link-value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .contact-arrow {
+    font-size: 18px;
+    color: rgba(245,243,238,0.3);
+  }
+
+  .contact-form-note {
+    padding: 2rem;
+    border: 1px solid rgba(245,243,238,0.12);
+    border-radius: 8px;
+    background: rgba(245,243,238,0.04);
+  }
+
+  .contact-form-note h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .contact-form-note p {
+    font-size: 14px;
+    color: rgba(245,243,238,0.65);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #5dcaa5;
+    letter-spacing: 0.04em;
+  }
+
+  .available-dot {
+    width: 8px;
+    height: 8px;
+    background: #5dcaa5;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111110;
+    color: rgba(245,243,238,0.35);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 4rem 1.5rem 3rem; }
+    .section-inner { padding: 0 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-sidebar { position: static; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero-name { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-subtitle { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-tags { animation: fadeUp 0.5s 0.3s ease both; }
+  .hero-ctas { animation: fadeUp 0.5s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">MB · DSC680</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Data Science Portfolio · 2026</p>
+    <h1 class="hero-name">Mostapha<br>Balon<em>.</em></h1>
+    <p class="hero-subtitle">Applied data scientist focused on workplace mental health, clinical informatics, and public policy — building tools that make complex data legible to the people who need it most.</p>
+    <div class="hero-tags">
+      <span class="tag tag-teal">Machine Learning</span>
+      <span class="tag tag-blue">NLP</span>
+      <span class="tag tag-amber">Data Visualization</span>
+      <span class="tag tag-coral">ML Deployment</span>
+      <span class="tag tag-teal">Statistical Analysis</span>
+      <span class="tag tag-blue">Data Engineering</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stat-grid">
+      <div class="hero-stat">
+        <span class="stat-number accent">10</span>
+        <span class="stat-label">Portfolio Projects</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number teal">5</span>
+        <span class="stat-label">Complete</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number blue">3K+</span>
+        <span class="stat-label">Records Analyzed</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-number">1.9K</span>
+        <span class="stat-label">Counties Studied</span>
+      </div>
+    </div>
+    <p class="hero-domain-note">"Employers spend minutes reviewing portfolios — every project here is chosen to speak directly to health, policy, and analytics roles."</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>I'm a data science student in Bellevue University's DSC680 Applied Data Science program, building a portfolio that bridges the gap between technical rigor and real-world impact. My work clusters around two domains I care about: <strong>workplace mental health</strong> and <strong>public health policy</strong> — areas where the right analysis can actually change how organizations and governments make decisions.</p>
+        <p>The five completed projects in this portfolio represent genuine problem-solving, not toy examples. I've worked with clinical data from 400 patients, survey data from 3,000 professionals, a decade of childcare pricing across nearly 2,000 U.S. counties, and global demographic datasets that required real data engineering to join together cleanly.</p>
+        <p>The five planned projects aren't padding — they're filling specific gaps I've identified: NLP for unstructured text, a deployed ML API that shows I can take a model the last mile, time series forecasting, production-grade data pipelines, and rigorous A/B testing. Each one opens a different category of job opportunity.</p>
+        <p>Before this program, I worked closer to the <strong>business side of data</strong> — which is why I care as much about the policy brief and the stakeholder deck as I do about the model's ROC-AUC score. Good analysis that nobody can act on isn't good analysis.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-block">
+          <p class="sidebar-block-title">Core Tools</p>
+          <div class="skill-list">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Scikit-learn</span>
+            <span class="skill-pill">Pandas</span>
+            <span class="skill-pill">SQL / SQLite</span>
+            <span class="skill-pill">Tableau</span>
+            <span class="skill-pill">Power BI</span>
+            <span class="skill-pill">Seaborn</span>
+            <span class="skill-pill">XGBoost</span>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-block-title">In Progress</p>
+          <div class="skill-list">
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">NLTK / spaCy</span>
+            <span class="skill-pill">Prophet</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">dbt</span>
+            <span class="skill-pill">Airflow</span>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-block-title">Domain Focus</p>
+          <div class="skill-list">
+            <span class="skill-pill">Workplace Mental Health</span>
+            <span class="skill-pill">Clinical Informatics</span>
+            <span class="skill-pill">Public Health Policy</span>
+            <span class="skill-pill">HR Analytics</span>
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-block-title">Education</p>
+          <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.6;">DSC680-T302 Applied Data Science<br>Bellevue University · April 2026</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+
+    <div class="projects-filter">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">All (10)</button>
+      <button class="filter-btn" onclick="filterProjects('complete', this)">Complete (5)</button>
+      <button class="filter-btn" onclick="filterProjects('planned', this)">Planned (5)</button>
+      <button class="filter-btn" onclick="filterProjects('health', this)">Mental Health</button>
+      <button class="filter-btn" onclick="filterProjects('ml', this)">ML / Classification</button>
+      <button class="filter-btn" onclick="filterProjects('viz', this)">Visualization</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- PROJECT 01 -->
+      <div class="project-card" data-status="complete" data-domain="health ml">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 01</span>
+          <span class="project-status status-complete">✓ Complete</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">Burnout Risk Prediction — Workplace Mental Health Classification</h3>
+        <span class="project-domain-badge tag-teal tag">Mental Health · ML</span>
+        <p class="project-desc">Binary classification system predicting employee burnout risk from survey data across 3,000 professionals. Compared five ML models with feature importance analysis and GridSearchCV tuning.</p>
+        <p class="project-highlight">"Random Forest and Gradient Boosting topped performance. Feature importance revealed stress level, work-life balance, and manager support as the top three drivers — which shaped the final business recommendations."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">Scikit-learn</span>
+          <span class="tool-chip">XGBoost</span>
+          <span class="tool-chip">Random Forest</span>
+          <span class="tool-chip">Pandas</span>
+          <span class="tool-chip">Seaborn</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 02 -->
+      <div class="project-card" data-status="complete" data-domain="health">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 02</span>
+          <span class="project-status status-complete">✓ Complete</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">Multi-Source Data Integration — Mental Health, Suicide Rates &amp; Demographics</h3>
+        <span class="project-domain-badge tag-teal tag">Mental Health · Data Eng.</span>
+        <p class="project-desc">Star schema SQLite database combining three datasets — workplace mental health survey, global suicide rates, and country demographics — joined with fuzzy matching across inconsistent country names.</p>
+        <p class="project-highlight">"The fuzzy matching across inconsistent country names was the trickiest part — and the most satisfying. The joined dataset unlocked relationships invisible in any single source."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">SQLite</span>
+          <span class="tool-chip">SQLAlchemy</span>
+          <span class="tool-chip">FuzzyWuzzy</span>
+          <span class="tool-chip">Pandas</span>
+          <span class="tool-chip">Seaborn</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 03 -->
+      <div class="project-card" data-status="complete" data-domain="health ml">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 03</span>
+          <span class="project-status status-complete">✓ Complete</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">Chronic Kidney Disease Classification — Clinical Feature Analysis</h3>
+        <span class="project-domain-badge tag-blue tag">Clinical · ML</span>
+        <p class="project-desc">Classification on the UCI CKD dataset (400 patients, 24 features) with KNN imputation for 38%+ missing data and engineered clinical features including eGFR, blood pressure categories, and albuminuria.</p>
+        <p class="project-highlight">"The eGFR feature I engineered ranked 6th by mutual information — higher than several original clinical measurements. A nice validation of the feature engineering step."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">UCI ML Repo</span>
+          <span class="tool-chip">Scikit-learn</span>
+          <span class="tool-chip">KNN Imputer</span>
+          <span class="tool-chip">Mutual Information</span>
+          <span class="tool-chip">Seaborn</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 04 -->
+      <div class="project-card" data-status="complete" data-domain="viz policy">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 04</span>
+          <span class="project-status status-complete">✓ Complete</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">U.S. Childcare Affordability Crisis — Visualization &amp; Policy Analysis</h3>
+        <span class="project-domain-badge tag-amber tag">Policy · Visualization</span>
+        <p class="project-desc">Analysis of 1,879 U.S. counties (2008–2018) with three deliverables: interactive Tableau dashboard, two-page policy brief for legislators, and eight-slide stakeholder presentation.</p>
+        <p class="project-highlight">"99% of counties exceed the federal 7% affordability benchmark — families pay 16.3% of income on infant care on average. The urban-rural gap was $103/week. Making that land in a policy brief was a different challenge than the code."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Tableau Public</span>
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">Power BI</span>
+          <span class="tool-chip">Policy Brief</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 05 -->
+      <div class="project-card" data-status="complete" data-domain="health ml">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 05</span>
+          <span class="project-status status-complete">✓ Complete</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">Exploratory Data Analysis — Burnout EDA &amp; Feature Engineering</h3>
+        <span class="project-domain-badge tag-teal tag">Mental Health · EDA</span>
+        <p class="project-desc">Phase one of the burnout prediction pipeline. Distribution analysis across 25 features, visualization by department and role, categorical encoding, and StandardScaler normalization for model-ready data.</p>
+        <p class="project-highlight">"The correlation heatmap showed stress level and burnout strongly positive, job satisfaction and burnout strongly negative — those two findings basically wrote the business recommendations."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">Pandas</span>
+          <span class="tool-chip">Matplotlib</span>
+          <span class="tool-chip">Seaborn</span>
+          <span class="tool-chip">StandardScaler</span>
+          <span class="tool-chip">One-Hot Encoding</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 06 -->
+      <div class="project-card planned" data-status="planned" data-domain="health nlp">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 06</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">NLP — Employee Sentiment Analysis from Workplace Reviews</h3>
+        <span class="project-domain-badge tag-coral tag">NLP · Mental Health</span>
+        <p class="project-desc">Sentiment classification and LDA topic modeling pipeline on Glassdoor reviews. VADER + fine-tuned classifier for polarity; topic modeling to surface recurring themes across departments.</p>
+        <p class="project-highlight">"Everything so far is tabular data. NLP shows I can handle unstructured text — which comes up constantly in job postings for data science and analytics roles."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">NLTK</span>
+          <span class="tool-chip">spaCy</span>
+          <span class="tool-chip">VADER</span>
+          <span class="tool-chip">Gensim LDA</span>
+          <span class="tool-chip">Scikit-learn</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 07 -->
+      <div class="project-card planned" data-status="planned" data-domain="ml deploy">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 07</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">ML Deployment — Burnout Risk Scoring API</h3>
+        <span class="project-domain-badge tag-blue tag">Deployment · MLOps</span>
+        <p class="project-desc">Productionizing the Gradient Boosting burnout model as a REST API with FastAPI, containerized in Docker, deployed to a free-tier cloud host with CI/CD via GitHub Actions.</p>
+        <p class="project-highlight">"Getting a model from a notebook into a real deployed API is the gap most student portfolios never close. The model is already built — this is about showing I can take it the last mile."</p>
+        <div class="project-tools">
+          <span class="tool-chip">FastAPI</span>
+          <span class="tool-chip">Docker</span>
+          <span class="tool-chip">Scikit-learn</span>
+          <span class="tool-chip">Render</span>
+          <span class="tool-chip">GitHub Actions</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 08 -->
+      <div class="project-card planned" data-status="planned" data-domain="health ml">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 08</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">Time Series Forecasting — Healthcare or Workforce Trend Analysis</h3>
+        <span class="project-domain-badge tag-blue tag">Forecasting · Health</span>
+        <p class="project-desc">ARIMA vs. Facebook Prophet comparison on hospital readmission rates or workforce turnover data, with custom seasonality regressors, MAPE/RMSE evaluation, and an interactive Plotly dashboard.</p>
+        <p class="project-highlight">"My current portfolio is all classification and EDA. Adding forecasting shows a completely different modeling skillset and opens up analyst, ops analytics, and supply chain adjacent roles."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">Prophet</span>
+          <span class="tool-chip">statsmodels</span>
+          <span class="tool-chip">ARIMA</span>
+          <span class="tool-chip">Plotly</span>
+          <span class="tool-chip">Pandas</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 09 -->
+      <div class="project-card planned" data-status="planned" data-domain="health">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 09</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">SQL &amp; Data Engineering — Public Health Reporting Pipeline</h3>
+        <span class="project-domain-badge tag-coral tag">Data Eng. · Public Health</span>
+        <p class="project-desc">End-to-end pipeline from BLS or CDC public API through cleaning, star schema loading, dbt reporting layer, and automated scheduling via Airflow or Prefect.</p>
+        <p class="project-highlight">"Data engineering shows up in almost every job description but is rarely in student portfolios. This bridges writing analysis code and building something that actually runs reliably on its own."</p>
+        <div class="project-tools">
+          <span class="tool-chip">PostgreSQL</span>
+          <span class="tool-chip">Airflow</span>
+          <span class="tool-chip">Prefect</span>
+          <span class="tool-chip">dbt</span>
+          <span class="tool-chip">BLS API</span>
+          <span class="tool-chip">CDC API</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 10 -->
+      <div class="project-card planned" data-status="planned" data-domain="stats">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <span class="project-number">PROJECT 10</span>
+          <span class="project-status status-planned">Planned</span>
+        </div>
+        <h3 class="project-title" style="padding-right:0;">A/B Testing &amp; Statistical Analysis — Experiment Design and Inference</h3>
+        <span class="project-domain-badge tag-amber tag">Statistics · Experimentation</span>
+        <p class="project-desc">Full A/B testing workflow: hypothesis definition, pre-experiment power analysis, covariate balance checks, appropriate test selection (t-test, Mann-Whitney, chi-square), multiple comparisons correction, and non-technical write-up.</p>
+        <p class="project-highlight">"A/B testing is one of the most tested topics in data science interviews, and almost no student portfolios include it. This rounds out the statistics side alongside the ML and engineering work."</p>
+        <div class="project-tools">
+          <span class="tool-chip">Python</span>
+          <span class="tool-chip">SciPy</span>
+          <span class="tool-chip">Statsmodels</span>
+          <span class="tool-chip">Pandas</span>
+          <span class="tool-chip">Matplotlib</span>
+          <span class="tool-chip">Seaborn</span>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">Open to data science, analytics, and ML engineering roles — particularly in healthcare, workforce analytics, and public sector policy. Let's talk.</p>
+        <div class="contact-links">
+          <a href="https://github.com/" class="contact-link" target="_blank">
+            <div class="contact-link-icon icon-gh">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </div>
+            <div class="contact-link-text">
+              <p class="contact-link-label">GitHub</p>
+              <p class="contact-link-value">github.com/mostaphabalon</p>
+            </div>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/" class="contact-link" target="_blank">
+            <div class="contact-link-icon icon-li">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </div>
+            <div class="contact-link-text">
+              <p class="contact-link-label">LinkedIn</p>
+              <p class="contact-link-value">linkedin.com/in/mostaphabalon</p>
+            </div>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="mailto:mostapha.balon@email.com" class="contact-link">
+            <div class="contact-link-icon icon-email">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="contact-link-text">
+              <p class="contact-link-label">Email</p>
+              <p class="contact-link-value">mostapha.balon@email.com</p>
+            </div>
+            <span class="contact-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-note">
+        <h3>Open to opportunities in:</h3>
+        <p>Data Science · Healthcare Analytics · Workforce Analytics · Public Health Policy · ML Engineering · People Analytics</p>
+        <p style="margin-bottom:1.5rem;">Comfortable working across the full pipeline — from messy raw data to deployed model to stakeholder presentation. Most interested in roles where the work has visible real-world impact.</p>
+        <div class="contact-availability">
+          <span class="available-dot"></span>
+          Currently available — finishing DSC680, May 2026
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Mostapha Balon · DSC680-T302 Applied Data Science · Bellevue University · 2026
+</footer>
+
+<script>
+function filterProjects(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    const status = card.dataset.status;
+    const domain = card.dataset.domain || '';
+    let show = false;
+
+    if (filter === 'all') show = true;
+    else if (filter === 'complete') show = status === 'complete';
+    else if (filter === 'planned') show = status === 'planned';
+    else if (filter === 'health') show = domain.includes('health');
+    else if (filter === 'ml') show = domain.includes('ml');
+    else if (filter === 'viz') show = domain.includes('viz');
+
+    card.style.display = show ? 'flex' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
